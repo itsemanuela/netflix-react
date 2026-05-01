@@ -1,7 +1,7 @@
  body {
         background-color: #141414 !important;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: white;
+        color: white !important;
       }
       .navbar-brand :hover {
         transform: scale(1.5);
