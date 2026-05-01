@@ -50,7 +50,7 @@ const MyNavbar = () => {
             <li className="nav-item search-box">
               <input type="checkbox" id="check" />
 
-              <label htmlFor="check" class="nav-link">
+              <label htmlFor="check" className="nav-link">
                 <i className="bi bi-search"></i>
               </label>
 
