@@ -1,130 +1,126 @@
 const MyFooter = () => {
   return (
-    <footer class="mt-5 py-5 container">
-      <div class="row justify-content-center">
-        <div class="col-6 col-md-2 mb-3">
-          <div class="d-flex mb-3">
+    <footer className="mt-5 py-5 container">
+      <div className="row justify-content-center">
+        <div className="col-6 col-md-2 mb-3">
+          <div className="d-flex mb-3">
             <a
-              href="https://www.facebook.com/..."
-              target="_blank"
-              class="text-secondary me-3"
+              href="#"
+              className="text-secondary me-3 text-decoration-none small fw-bold"
             >
-              <i class="fab fa-facebook fa-lg"></i>
+              <i className="bi bi-facebook"></i>
             </a>
             <a
-              href="https://www.instagram.com/..."
-              target="_blank"
-              class="text-secondary me-3"
+              href="#"
+              className="text-secondary me-3 text-decoration-none small fw-bold"
             >
-              <i class="fab fa-instagram-square fa-lg"></i>
+              <i className="bi bi-instagram"></i>
             </a>
             <a
-              href="https://x.com/..."
-              target="_blank"
-              class="text-secondary me-3"
+              href="#"
+              className="text-secondary me-3 text-decoration-none small fw-bold"
             >
-              <i class="fab fa-twitter fa-lg"></i>
+              <i className="bi bi-twitter-x"></i>
             </a>
             <a
-              href="https://www.youtube.com/..."
-              target="_blank"
-              class="text-secondary"
+              href="#"
+              className="text-secondary text-decoration-none small fw-bold"
             >
-              <i class="fab fa-youtube fa-lg"></i>
+              <i className="bi bi-youtube"></i>
             </a>
           </div>
 
-          <ul class="list-unstyled mt-3">
+          <ul className="list-unstyled mt-3">
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Audio and Subtitles
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Media Center
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Privacy
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Contact us
               </a>
             </li>
           </ul>
+
           <button
             type="button"
-            class="btn btn-outline-secondary btn-sm mt-3 rounded-0"
+            className="btn btn-outline-secondary btn-sm mt-3 rounded-0"
           >
             Service Code
           </button>
-          <div class="mt-3">
-            <p>
-              <a class="text-decoration-none text-secondary" href="#">
-                <i class="far fa-copyright"></i> 1997-2019 Netflix, Inc.
-              </a>
+
+          <div className="mt-3">
+            <p className="text-secondary small mt-3">
+              <i className="bi bi-c-circle"></i> 1997-2024 Netflix, Inc.
             </p>
           </div>
         </div>
 
-        <div class="col-6 col-md-2 mb-3">
-          <ul class="list-unstyled mt-md-5">
+        <div className="col-6 col-md-2 mb-3">
+          <ul className="list-unstyled mt-md-5">
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Audio Description
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Investor Relations
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Legal Notices
               </a>
             </li>
           </ul>
         </div>
 
-        <div class="col-6 col-md-2 mb-3">
-          <ul class="list-unstyled mt-md-5">
+        <div className="col-6 col-md-2 mb-3">
+          <ul className="list-unstyled mt-md-5">
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Help Center
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Jobs
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Cookies Preferences
               </a>
             </li>
           </ul>
         </div>
 
-        <div class="col-6 col-md-2 mb-3">
-          <ul class="list-unstyled mt-md-5">
+        <div className="col-6 col-md-2 mb-3">
+          <ul className="list-unstyled mt-md-5">
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Gift Cards
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Terms of Use
               </a>
             </li>
             <li>
-              <a href="#" class="text-secondary text-decoration-none small">
+              <a href="#" className="text-secondary text-decoration-none small">
                 Corporate Information
               </a>
             </li>
@@ -134,4 +130,5 @@ const MyFooter = () => {
     </footer>
   );
 };
+
 export default MyFooter;

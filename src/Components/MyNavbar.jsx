@@ -50,11 +50,15 @@ const MyNavbar = () => {
             <li className="nav-item search-box">
               <input type="checkbox" id="check" />
 
-              <label for="check" class="nav-link">
-                <i className="fas fa-search icon"></i>
+              <label htmlFor="check" class="nav-link">
+                <i className="bi bi-search"></i>
               </label>
 
-              <input type="text" placeholder="Search..." class="search-input" />
+              <input
+                type="text"
+                placeholder="Search..."
+                className="search-input"
+              />
             </li>
 
             <li className="nav-item">
@@ -65,7 +69,7 @@ const MyNavbar = () => {
             <li className="nav-item search-box">
               <a href="#">
                 {" "}
-                <i className="fas fa-bell text-secondary"></i>{" "}
+                <i className="bi bi-bell text-light"></i>{" "}
               </a>
             </li>
             <li className="nav-item dropdown">

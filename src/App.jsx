@@ -1,6 +1,7 @@
 import "./App.css";
 import MyFooter from "./Components/MyFooter";
 import MyNavbar from "./Components/MyNavbar";
+import MyGallery from "./Components/MyMovies";
 
 function App() {
   return (
@@ -8,7 +9,13 @@ function App() {
       <header>
         <MyNavbar />
       </header>
-      <main></main>
+      <main>
+        <MyGallery sagaName="Harry Potter" />
+
+        <MyGallery sagaName="Hunger Games" />
+
+        <MyGallery sagaName="Twilight" />
+      </main>
       <footer>
         <MyFooter />
       </footer>

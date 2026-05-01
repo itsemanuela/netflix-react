@@ -10,22 +10,37 @@
         background-color: #141414 !important;
         padding: 15px 0;
       }
-      .carousel-item img {
-        transition: transform 0.3s ease;
-        cursor: pointer;
-        width: 100%;
-        height: auto;
-      }
-      .carousel-item img:hover {
-        transform: scale(1.1);
-        z-index: 10;
-      }
-      .carousel-control-prev,
-      .carousel-control-next {
-        width: 4%;
-        z-index: 5;
-        background-color: #e50914;
-      }
+      
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+  background-color: #e50914;  
+  width: 8%;
+  opacity: 0.8;
+}
+
+.custom-carousel .carousel-control-prev:hover,
+.custom-carousel .carousel-control-next:hover {
+  opacity: 1;
+}
+ 
+.custom-carousel .carousel-indicators [button],
+.custom-carousel .carousel-indicators button {
+  background-color: #555 !important;  
+  height: 6px;
+  border: none;
+}
+
+.custom-carousel .carousel-indicators .active {
+  background-color: #e50914 !important;  
+}
+ 
+.carousel-item img {
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.05);
+}
 
       main {
         padding-top: 80px;
