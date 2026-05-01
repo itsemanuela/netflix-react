@@ -7,6 +7,7 @@ class MyGallery extends Component {
     isLoading: true,
     isError: "",
   };
+
   //suono hover sulle card!
   riproduciSuono = () => {
     const audio = new Audio("./public/Audio/hover-sound-effect.mp3");
