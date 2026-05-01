@@ -2,6 +2,7 @@ import "./App.css";
 import MyFooter from "./Components/MyFooter";
 import MyNavbar from "./Components/MyNavbar";
 import MyGallery from "./Components/MyMovies";
+import Sottotitolo from "./Components/Sottotitolo";
 
 function App() {
   return (
@@ -10,11 +11,12 @@ function App() {
         <MyNavbar />
       </header>
       <main>
-        <MyGallery sagaName="Harry Potter" />
+        <Sottotitolo />
+        <MyGallery sagaName="Spider Man" />
 
-        <MyGallery sagaName="Hunger Games" />
+        <MyGallery sagaName="The Lord of the Rings" />
 
-        <MyGallery sagaName="Twilight" />
+        <MyGallery sagaName="X-Men " />
       </main>
       <footer>
         <MyFooter />

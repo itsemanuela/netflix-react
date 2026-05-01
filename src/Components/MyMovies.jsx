@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container, Carousel, Spinner, Alert, Row, Col } from "react-bootstrap";
+import { Container, Carousel, Row, Col, Spinner, Alert } from "react-bootstrap";
 
 class MyGallery extends Component {
   state = {
@@ -35,53 +35,65 @@ class MyGallery extends Component {
 
   render() {
     return (
-      <Container fluid className="px-5 my-4">
-        <h4 className="text-light mb-3">{this.props.sagaName}</h4>
+      <Container fluid className="px-4 my-4">
+        <h5 className="text-light mt-4 mb-3">{this.props.sagaName}</h5>
 
         {this.state.isLoading && (
-          <Spinner
-            animation="border"
-            variant="danger"
-            className="d-block mx-auto"
-          />
+          <div className="d-flex justify-content-center my-5">
+            <Spinner animation="border" variant="danger" />
+          </div>
         )}
+
         {this.state.isError && (
           <Alert variant="danger">{this.state.isError}</Alert>
         )}
 
         {!this.state.isLoading && !this.state.isError && (
           <Carousel
+            id="carouselTrending"
             indicators={true}
             interval={null}
-            className="custom-carousel"
+            className="custom-carousel pb-4"
           >
             <Carousel.Item>
-              <Row className="row-cols-2 row-cols-md-3 row-cols-lg-5 g-2">
-                {this.state.movies.slice(0, 5).map((movie) => (
-                  <Col key={movie.imdbID}>
+              <Row className="flex-nowrap overflow-x-auto g-1 px-5 no-scrollbar">
+                {this.state.movies.slice(0, 6).map((movie) => (
+                  <Col key={movie.imdbID} xs={12} md={4} lg={2}>
                     <img
                       src={movie.Poster}
                       alt={movie.Title}
-                      className="img-fluid rounded shadow movie-img"
+                      className="rounded film img-fluid"
+                      style={{
+                        aspectRatio: "2/3",
+                        objectFit: "cover",
+                        minWidth: "100%",
+                      }}
                     />
                   </Col>
                 ))}
               </Row>
             </Carousel.Item>
 
-            <Carousel.Item>
-              <Row className="row-cols-2 row-cols-md-3 row-cols-lg-5 g-2">
-                {this.state.movies.slice(0, 5).map((movie) => (
-                  <Col key={movie.imdbID}>
-                    <img
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      className="img-fluid rounded shadow movie-img"
-                    />
-                  </Col>
-                ))}
-              </Row>
-            </Carousel.Item>
+            {this.state.movies.length > 6 && (
+              <Carousel.Item>
+                <Row className="flex-nowrap overflow-x-auto g-1 px-5 no-scrollbar">
+                  {this.state.movies.slice(6, 12).map((movie) => (
+                    <Col key={movie.imdbID} xs={12} md={4} lg={2}>
+                      <img
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        className="rounded film img-fluid"
+                        style={{
+                          aspectRatio: "2/3",
+                          objectFit: "cover",
+                          minWidth: "100%",
+                        }}
+                      />
+                    </Col>
+                  ))}
+                </Row>
+              </Carousel.Item>
+            )}
           </Carousel>
         )}
       </Container>
