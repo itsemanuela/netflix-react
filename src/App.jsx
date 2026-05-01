@@ -3,10 +3,12 @@ import MyFooter from "./Components/MyFooter";
 import MyNavbar from "./Components/MyNavbar";
 import MyGallery from "./Components/MyMovies";
 import Sottotitolo from "./Components/Sottotitolo";
+import NetflixSound from "./Components/NetflixSound";
 
 function App() {
   return (
     <>
+      <NetflixSound />
       <header>
         <MyNavbar />
       </header>

@@ -7,6 +7,12 @@ class MyGallery extends Component {
     isLoading: true,
     isError: "",
   };
+  //suono hover sulle card!
+  riproduciSuono = () => {
+    const audio = new Audio("./public/Audio/hover-sound-effect.mp3");
+    audio.volume = 0.4;
+    audio.play().catch((err) => console.log("Audio bloccato:", err));
+  };
 
   getFilm = () => {
     this.setState({ isLoading: true });
@@ -74,6 +80,7 @@ class MyGallery extends Component {
                       src={movie.Poster}
                       alt={movie.Title}
                       className="rounded film img-fluid"
+                      onMouseEnter={this.riproduciSuono}
                       onError={(e) => {
                         e.target.closest(".col").style.display = "none";
                       }}
