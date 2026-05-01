@@ -12,10 +12,11 @@ function App() {
       </header>
       <main>
         <Sottotitolo />
+        <MyGallery sagaName="Harry Potter" />
         <MyGallery sagaName="Spider Man" />
-
+        <MyGallery sagaName="Matrix" />
         <MyGallery sagaName="The Lord of the Rings" />
-
+        <MyGallery sagaName="Hunger Games" />
         <MyGallery sagaName="X-Men " />
       </main>
       <footer>

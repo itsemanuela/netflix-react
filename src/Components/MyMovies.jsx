@@ -9,24 +9,35 @@ class MyGallery extends Component {
   };
 
   getFilm = () => {
+    this.setState({ isLoading: true });
+
     fetch(`http://www.omdbapi.com/?apikey=b3658703&s=${this.props.sagaName}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("Errore di connessione", response.status);
+          throw new Error("Errore nella risposta del server");
         }
       })
       .then((data) => {
         if (data.Response === "True") {
-          this.setState({ movies: data.Search, isLoading: false });
+          const validMovies = data.Search.filter(
+            (m) => m.Poster && m.Poster !== "N/A" && m.Type === "movie",
+          );
+          //ho dovuto trovare un modo per filtrare i film in quanto mi sono accorta che parti dell'api sono "rotte" e non permettono di mostrare i poster: dunque ho cercato un metodo per non mostrare quelli rotti (display:none sullo style delle img)
+          this.setState({
+            movies: validMovies,
+            isLoading: false,
+            isError: "",
+          });
         } else {
           throw new Error(data.Error);
         }
       })
-      .catch((err) =>
-        this.setState({ isError: err.message, isLoading: false }),
-      );
+      .catch((err) => {
+        console.error("Errore nel recupero film:", err);
+        this.setState({ isError: err.message, isLoading: false });
+      });
   };
 
   componentDidMount() {
@@ -63,10 +74,8 @@ class MyGallery extends Component {
                       src={movie.Poster}
                       alt={movie.Title}
                       className="rounded film img-fluid"
-                      style={{
-                        aspectRatio: "2/3",
-                        objectFit: "cover",
-                        minWidth: "100%",
+                      onError={(e) => {
+                        e.target.closest(".col").style.display = "none";
                       }}
                     />
                   </Col>
