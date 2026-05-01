@@ -40,7 +40,7 @@
 }
 
 .carousel-item img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
       main {
@@ -70,7 +70,7 @@
         overflow: hidden;
       }
 
-      #check:checked ~ .search-input {
+       #check:checked ~ .search-input {
         width: 200px;
         padding: 5px 10px;
         border: 1px solid white;
@@ -81,3 +81,12 @@
       #check:checked + label .icon {
         color: #e50914;
       }
+
+      .film-poster {
+  height: 180px;       
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+

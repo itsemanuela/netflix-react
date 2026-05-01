@@ -79,7 +79,7 @@ class MyGallery extends Component {
                     <img
                       src={movie.Poster}
                       alt={movie.Title}
-                      className="rounded film img-fluid"
+                      className="film-poster"
                       onMouseEnter={this.riproduciSuono}
                       onError={(e) => {
                         e.target.closest(".col").style.display = "none";
@@ -98,12 +98,7 @@ class MyGallery extends Component {
                       <img
                         src={movie.Poster}
                         alt={movie.Title}
-                        className="rounded film img-fluid"
-                        style={{
-                          aspectRatio: "2/3",
-                          objectFit: "cover",
-                          minWidth: "100%",
-                        }}
+                        className="film-poster"
                       />
                     </Col>
                   ))}

@@ -80,7 +80,7 @@ const MyNavbar = () => {
                 data-bs-toggle="dropdown"
               >
                 <img
-                  src="./Immagini/avatar.png"
+                  src="./Immagini/kids_icon.png"
                   alt="Profile"
                   width="32"
                   className="rounded"

@@ -20,6 +20,11 @@ function App() {
         <MyGallery sagaName="The Lord of the Rings" />
         <MyGallery sagaName="Hunger Games" />
         <MyGallery sagaName="X-Men " />
+        <MyGallery sagaName="Batman" />
+        <MyGallery sagaName="James Bond" />
+        <MyGallery sagaName="Superman" />
+        <MyGallery sagaName="Star Wars" />
+        <MyGallery sagaName="Twilight" />
       </main>
       <footer>
         <MyFooter />
