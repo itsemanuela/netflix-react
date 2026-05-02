@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Container, Carousel, Row, Col, Spinner, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class MyGallery extends Component {
   state = {
@@ -77,15 +78,17 @@ class MyGallery extends Component {
               <Row className="flex-nowrap overflow-x-auto g-1 px-5 no-scrollbar">
                 {this.state.movies.slice(0, 6).map((movie) => (
                   <Col key={movie.imdbID} xs={12} md={4} lg={2}>
-                    <img
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      className="film-poster"
-                      onMouseEnter={this.riproduciSuono}
-                      onError={(e) => {
-                        e.target.closest(".col").style.display = "none";
-                      }}
-                    />
+                    <Link to={`/movie-details/${movie.imdbID}`}>
+                      <img
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        className="film-poster"
+                        onMouseEnter={this.riproduciSuono}
+                        onError={(e) => {
+                          e.target.closest(".col").style.display = "none";
+                        }}
+                      />
+                    </Link>
                   </Col>
                 ))}
               </Row>
