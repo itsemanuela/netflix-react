@@ -222,3 +222,64 @@
     width: 8% !important;
   }
 }
+
+/*Sign-Out Page*/
+
+
+.login-wrapper {
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #331012 0%, #000000 70%);
+  color: white;
+}
+
+.login-content {
+  padding-top: 50px;
+}
+
+.login-box {
+  max-width: 500px;
+  width: 100%;
+}
+
+.login-box h1 {
+  font-size: 2.5rem;
+}
+
+
+.login-input {
+  background-color: rgba(18, 18, 18, 0.8) !important;
+  border: 1px solid #555 !important;
+  color: white !important;
+  padding: 12px 15px !important;
+}
+
+.login-input:focus {
+  border-color: white !important;
+  box-shadow: none !important;
+}
+
+
+.login-btn {
+  background-color: #e50914 !important;
+  border: none !important;
+  font-size: 1.1rem;
+}
+
+.login-btn:hover {
+  background-color: #c40812 !important;
+}
+
+.recaptcha-text {
+  font-size: 0.8rem;
+  color: #8c8c8c;
+  line-height: 1.4;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-pointer:hover {
+  text-decoration: underline;
+}
+
