@@ -12,6 +12,7 @@ import NetflixSound from "./Components/NetflixSound";
 import Settings from "./Components/Settings";
 import Profile from "./Components/Profile";
 import MyFilmCarousel from "./Components/MyFilmCarousel";
+import MyRecent from "./Components/MyRecent";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
             <Route path="/account" element={<Profile />} />
             <Route path="/movies" element={<MyFilmCarousel />} />
             <Route path="/tv-shows" element={<MyTvShow />} />
+            <Route path="/recently-added" element={<MyRecent />} />
           </Routes>
         </main>
 

@@ -2,7 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 
 const MyNavbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark fixed-top px-lg-5">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark fixed-top px-lg-5"
+      style={{ backgroundColor: "rgba(0,0,0,0.7)" }}
+    >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/movies">
           <img src="/Immagini/netflix_logo.png" alt="Netflix" width="110" />
@@ -43,17 +46,33 @@ const MyNavbar = () => {
 
           <ul className="navbar-nav d-flex flex-row align-items-center gap-3">
             <li className="nav-item">
-              <i className="bi bi-search text-light cursor-pointer"></i>
+              <div className="search-box">
+                <input type="checkbox" id="check" />
+                <label
+                  htmlFor="check"
+                  className="mb-0 d-flex align-items-center"
+                >
+                  <i className="bi bi-search text-light cursor-pointer"></i>
+                </label>
+                <input
+                  type="text"
+                  className="search-input"
+                  placeholder="Titoli, persone, generi..."
+                />
+              </div>
             </li>
+
             <li
               className="nav-item px-2 text-light fw-bold"
               style={{ cursor: "pointer" }}
             >
               KIDS
             </li>
+
             <li className="nav-item">
-              <i className="bi bi-bell text-light"></i>
+              <i className="bi bi-bell text-light cursor-pointer"></i>
             </li>
+
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle p-0"

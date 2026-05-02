@@ -55,6 +55,7 @@
         display: flex;
         align-items: center;
         position: relative;
+        cursor:pointer;
       }
       .search-input {
         width: 0;
