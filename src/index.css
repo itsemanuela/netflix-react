@@ -83,11 +83,141 @@
       }
 
       .film-poster {
-  height: 180px;       
+  height: 280px;       
   width: 100%;
   object-fit: cover;
   border-radius: 4px;
   transition: transform 0.2s;
 }
 
+/* Pagina prof */
+.edit-profile-bg {
+  background-color: #141414;
+  color: white;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
 
+.input-nome-profilo {
+  background-color: #666 !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 0 !important;
+}
+
+.bottone-grigio-vuoto {
+  border: 1px solid #666;
+  color: #666;
+  border-radius: 0;
+  background: transparent;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.bottone-grigio-vuoto:hover {
+  border-color: white;
+  color: white;
+}
+
+.selezione-quadrata {
+  border-radius: 0 !important;
+  background-color: transparent;
+  border-color: #666;
+}
+
+.selezione-quadrata:checked {
+  background-color: #666;
+  border-color: #666;
+}
+
+.bottone-conferma-rosso {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 8px 25px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#pen1 {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#pen1:hover {
+  transform: scale(1.1);
+}
+
+
+
+.netflix-wrapper {
+  background-color: #141414; 
+  color: white;
+  padding-top: 20px;
+}
+
+
+.netflix-wrapper h5 {
+  font-weight: bold;
+  color: #e5e5e5;
+  transition: color 0.3s;
+}
+
+.netflix-wrapper h5:hover {
+  color: white;
+}
+
+
+.netflix-img-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.netflix-img-card:hover {
+  transform: scale(1.15) !important;
+  z-index: 100;
+  position: relative;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.6);
+}
+
+
+
+
+.netflix-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+/* 5. Pulsanti di Navigazione (Frecce) */
+.netflix-nav-btn {
+  width: 4% !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  transition: background-color 0.3s ease;
+}
+
+.netflix-nav-btn:hover {
+  background-color: rgba(229, 9, 20, 0.8) !important; 
+}
+
+
+.dropdown-item:hover {
+  background-color: #e50914 !important;
+  color: white !important;
+}
+
+
+@media (max-width: 768px) {
+  .netflix-img-card:hover {
+    transform: scale(1.05) !important; 
+  }
+  .netflix-nav-btn {
+    width: 8% !important;
+  }
+}

@@ -8,10 +8,10 @@ class MyGallery extends Component {
     isError: "",
   };
 
-  //suono hover sulle card!
+  //suono sulle card hover
   riproduciSuono = () => {
     const audio = new Audio("./public/Audio/hover-sound-effect.mp3");
-    audio.volume = 0.4;
+    audio.volume = 0.7;
     audio.play().catch((err) => console.log("Audio bloccato:", err));
   };
 

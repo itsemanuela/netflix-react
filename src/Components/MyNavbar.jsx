@@ -1,15 +1,13 @@
+import { Link, NavLink } from "react-router-dom";
+
 const MyNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top px-lg-5">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          <img
-            id="logoprincipale"
-            src="./Immagini/netflix_logo.png"
-            alt="Netflix"
-            width="110"
-          />
-        </a>
+        <Link className="navbar-brand" to="/movies">
+          <img src="/Immagini/netflix_logo.png" alt="Netflix" width="110" />
+        </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -18,69 +16,52 @@ const MyNavbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 fw-semibold">
             <li className="nav-item">
-              <a className="nav-link active" href="#">
+              <NavLink className="nav-link" to="/movies" end>
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/tv-shows">
                 Tv Shows
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Movies
-              </a>
+              <NavLink className="nav-link" to="/">
+                Saghe
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/recently-added">
                 Recently Added
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                My List
-              </a>
+              </NavLink>
             </li>
           </ul>
+
           <ul className="navbar-nav d-flex flex-row align-items-center gap-3">
-            <li className="nav-item search-box">
-              <input type="checkbox" id="check" />
-
-              <label htmlFor="check" className="nav-link">
-                <i className="bi bi-search"></i>
-              </label>
-
-              <input
-                type="text"
-                placeholder="Search..."
-                className="search-input"
-              />
-            </li>
-
             <li className="nav-item">
-              <a className="nav-link fw-bold" href="#">
-                KIDS
-              </a>
+              <i className="bi bi-search text-light cursor-pointer"></i>
             </li>
-            <li className="nav-item search-box">
-              <a href="#">
-                {" "}
-                <i className="bi bi-bell text-light"></i>{" "}
-              </a>
+            <li
+              className="nav-item px-2 text-light fw-bold"
+              style={{ cursor: "pointer" }}
+            >
+              KIDS
+            </li>
+            <li className="nav-item">
+              <i className="bi bi-bell text-light"></i>
             </li>
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle d-flex align-items-center"
+                className="nav-link dropdown-toggle p-0"
                 href="#"
-                role="button"
                 data-bs-toggle="dropdown"
               >
                 <img
-                  src="./Immagini/kids_icon.png"
+                  src="/Immagini/kids_icon.png"
                   alt="Profile"
                   width="32"
                   className="rounded"
@@ -88,22 +69,22 @@ const MyNavbar = () => {
               </a>
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark">
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/settings">
                     Settings
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" target="_blank" href="#">
+                  <Link className="dropdown-item" to="/account">
                     Account
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" id="dangerzone" href="#">
+                  <Link className="dropdown-item" to="/logout">
                     Sign Out
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
