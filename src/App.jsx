@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import MyTvShow from "./Components/MySitcomCarousel";
 //Per reindirizzare le pagine nel tuo progetto Netflix, ho seguito un flusso di lavoro basato su React Router DOM, infatti ho installato dal terminale il metodo BrowserRouter e studiato come fare per migliorare e semplificare il passaggio da una pagina all'altra sulla politica della SinglePage di react!
 
 import MyFooter from "./Components/MyFooter";
@@ -48,6 +48,7 @@ function App() {
 
             <Route path="/account" element={<Profile />} />
             <Route path="/movies" element={<MyFilmCarousel />} />
+            <Route path="/tv-shows" element={<MyTvShow />} />
           </Routes>
         </main>
 

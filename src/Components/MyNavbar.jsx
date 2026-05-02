@@ -26,7 +26,7 @@ const MyNavbar = () => {
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/tv-shows">
-                Tv Shows
+                Sitcom
               </NavLink>
             </li>
             <li className="nav-item">
