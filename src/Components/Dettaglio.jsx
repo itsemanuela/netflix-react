@@ -7,20 +7,19 @@ const Dettaglio = () => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?apikey=b3658703&i=${movieId}`)
+    fetch(`https://www.omdbapi.com/?apikey=b3658703&i=${movieId}`)
       .then((res) => res.json())
       .then((data) => setMovie(data))
       .catch((err) => console.error("Errore fetch:", err));
   }, [movieId]);
 
-  if (!movie)
+  if (!movie) {
     return (
-      <Spinner
-        animation="border"
-        variant="danger"
-        className="d-block mx-auto mt-5"
-      />
+      <div className="bg-dark min-vh-100 d-flex justify-content-center align-items-center">
+        <Spinner animation="border" variant="danger" />
+      </div>
     );
+  }
 
   return (
     <Container className="text-white mt-5 pt-5">
@@ -30,17 +29,13 @@ const Dettaglio = () => {
             src={
               movie.Poster !== "N/A"
                 ? movie.Poster
-                : "https://via.placeholder.com/400x600?text=Anteprima+non+disponibile"
+                : "https://via.placeholder.com/400x600"
             }
             alt={movie.Title}
             className="img-fluid rounded shadow-lg border border-secondary"
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src =
-                "https://via.placeholder.com/400x600?text=Immagine+non+trovata";
-            }}
           />
         </Col>
+
         <Col md={8} className="ps-md-5">
           <h1 className="fw-bold display-4">{movie.Title}</h1>
 

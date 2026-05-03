@@ -9,24 +9,33 @@ class MyMovies extends Component {
     isError: "",
   };
 
+  riproduciSuono = () => {
+    const audio = new Audio("/Audio/hover-sound-effect.mp3");
+    audio.volume = 0.7;
+    audio.currentTime = 0;
+    audio
+      .play()
+      .catch((err) => console.log("Audio in attesa di interazione", err));
+  };
+
   getFilm = () => {
     this.setState({ isLoading: true });
 
     fetch(
-      `http://www.omdbapi.com/?apikey=b3658703&s=${encodeURIComponent(
+      `https://www.omdbapi.com/?apikey=b3658703&s=${encodeURIComponent(
         this.props.sagaName,
       )}&type=movie`,
     )
       .then((response) => {
-        if (!response.ok) throw new Error("Errore di rete");
+        if (!response.ok)
+          throw new Error("Errore durante la chiamata", response.status);
         return response.json();
       })
       .then((data) => {
         if (data.Response === "True") {
-          const uniqueMovies = data.Search.filter(
-            (movie, index, self) =>
-              index === self.findIndex((m) => m.imdbID === movie.imdbID),
-          );
+          const uniqueMovies = [
+            ...new Map(data.Search.map((m) => [m.imdbID, m])).values(),
+          ];
 
           this.setState({
             movies: uniqueMovies,
@@ -54,9 +63,9 @@ class MyMovies extends Component {
 
   render() {
     const { movies, isLoading, isError } = this.state;
-
+    const carouselId = `carousel-${this.props.sagaName.replace(/\s+/g, "")}`; //per il carosello ho studiato il metodo replace per incapsulare tutte le saghe uguali in un unico blocco
     return (
-      <Container fluid className="px-4 my-4">
+      <Container fluid className="px-4 my-4 ">
         <h5 className="text-light mt-4 mb-3 text-capitalize">
           {this.props.sagaName}
         </h5>
@@ -67,12 +76,17 @@ class MyMovies extends Component {
           </div>
         )}
 
-        {isError && <Alert variant="danger">{isError}</Alert>}
+        {isError && (
+          <Alert variant="danger" className="text-center">
+            {isError}
+          </Alert>
+        )}
 
         {!isLoading && !isError && (
           <Carousel
-            id={`carousel-${this.props.sagaName.replace(/\s+/g, "")}`}
-            indicators={false}
+            id={carouselId}
+            className="custom-carousel pb-4"
+            indicators={true}
             interval={null}
           >
             <Carousel.Item>
@@ -84,11 +98,11 @@ class MyMovies extends Component {
                         src={
                           movie.Poster !== "N/A"
                             ? movie.Poster
-                            : "https://via.placeholder.com/300x450?text=No+Poster"
+                            : "https://via.placeholder.com/300x450"
                         }
                         alt={movie.Title}
-                        className="img-fluid rounded film-poster movie-card"
-                        style={{ cursor: "pointer" }}
+                        className="img-fluid rounded netflix-img-card"
+                        onMouseEnter={this.riproduciSuono}
                       />
                     </Link>
                   </Col>
@@ -106,11 +120,11 @@ class MyMovies extends Component {
                           src={
                             movie.Poster !== "N/A"
                               ? movie.Poster
-                              : "https://via.placeholder.com/300x450?text=No+Poster"
+                              : "https://via.placeholder.com/300x450"
                           }
                           alt={movie.Title}
-                          className="img-fluid rounded film-poster movie-card"
-                          style={{ cursor: "pointer" }}
+                          className="img-fluid rounded netflix-img-card"
+                          onMouseEnter={this.riproduciSuono}
                         />
                       </Link>
                     </Col>
