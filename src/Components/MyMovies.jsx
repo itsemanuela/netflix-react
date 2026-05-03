@@ -13,7 +13,9 @@ class MyMovies extends Component {
     this.setState({ isLoading: true });
 
     fetch(
-      `http://www.omdbapi.com/?apikey=b3658703&s=${encodeURIComponent(this.props.sagaName)}&type=movie`,
+      `http://www.omdbapi.com/?apikey=b3658703&s=${encodeURIComponent(
+        this.props.sagaName,
+      )}&type=movie`,
     )
       .then((response) => {
         if (!response.ok) throw new Error("Errore di rete");
@@ -44,24 +46,30 @@ class MyMovies extends Component {
     this.getFilm();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.sagaName !== this.props.sagaName) {
+      this.getFilm();
+    }
+  }
+
   render() {
+    const { movies, isLoading, isError } = this.state;
+
     return (
       <Container fluid className="px-4 my-4">
         <h5 className="text-light mt-4 mb-3 text-capitalize">
           {this.props.sagaName}
         </h5>
 
-        {this.state.isLoading && (
+        {isLoading && (
           <div className="d-flex justify-content-center my-5">
             <Spinner animation="border" variant="danger" />
           </div>
         )}
 
-        {this.state.isError && (
-          <Alert variant="danger">{this.state.isError}</Alert>
-        )}
+        {isError && <Alert variant="danger">{isError}</Alert>}
 
-        {!this.state.isLoading && !this.state.isError && (
+        {!isLoading && !isError && (
           <Carousel
             id={`carousel-${this.props.sagaName.replace(/\s+/g, "")}`}
             indicators={false}
@@ -69,13 +77,8 @@ class MyMovies extends Component {
           >
             <Carousel.Item>
               <Row className="flex-nowrap g-1 px-5">
-                {this.state.movies.slice(0, 6).map((movie, index) => (
-                  <Col
-                    key={`movie-${movie.imdbID}-${index}`}
-                    xs={12}
-                    md={4}
-                    lg={2}
-                  >
+                {movies.slice(0, 6).map((movie) => (
+                  <Col key={movie.imdbID} xs={12} md={4} lg={2}>
                     <Link to={`/movie-details/${movie.imdbID}`}>
                       <img
                         src={
@@ -93,16 +96,11 @@ class MyMovies extends Component {
               </Row>
             </Carousel.Item>
 
-            {this.state.movies.length > 6 && (
+            {movies.length > 6 && (
               <Carousel.Item>
                 <Row className="flex-nowrap g-1 px-5">
-                  {this.state.movies.slice(6, 12).map((movie, index) => (
-                    <Col
-                      key={`movie-extra-${movie.imdbID}-${index}`}
-                      xs={12}
-                      md={4}
-                      lg={2}
-                    >
+                  {movies.slice(6, 12).map((movie) => (
+                    <Col key={movie.imdbID} xs={12} md={4} lg={2}>
                       <Link to={`/movie-details/${movie.imdbID}`}>
                         <img
                           src={
