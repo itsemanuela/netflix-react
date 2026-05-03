@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Carousel, Spinner } from "react-bootstrap";
 
-//In un primo momento avevo fedelmente riportato la pagina home, immagine per immagine come il progetto originale, successivamente ho deciso di riempire la mia home con una fetch all'Api (TMDB) in modo da generarmi dinamicamente il carosello Home.
-//Ho dovuto fare due fetch in quanto l'api mi permette di chiamare solo dieci film alla volta.
-
 const MyFilmCarousel = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const API_KEY = "ebb7fabe405f613b137665b33b3cde68";
   const IMG_URL = "https://image.tmdb.org/t/p/w500";
+
   const riproduciSuono = () => {
     const audio = new Audio("/Audio/hover-sound-effect.mp3");
     audio.volume = 0.7;
@@ -28,11 +26,13 @@ const MyFilmCarousel = () => {
           .then((response) => response.json())
           .then((data2) => {
             const tuttiIFilm = [...data1.results, ...data2.results];
-
             setMovies(tuttiIFilm);
             setLoading(false);
           })
-          .catch((err) => console.error("Errore caricando pagina 2", err));
+          .catch((err) => {
+            console.error("Errore caricando pagina 2", err);
+            setLoading(false);
+          });
       })
       .catch((err) => {
         console.error("Errore caricando pagina 1", err);
@@ -40,14 +40,13 @@ const MyFilmCarousel = () => {
       });
   }, []);
 
-  if (loading)
+  if (loading) {
     return (
-      <Spinner
-        animation="border"
-        variant="danger"
-        className="d-block mx-auto mt-5"
-      />
+      <div className="bg-dark min-vh-100 d-flex justify-content-center align-items-center">
+        <Spinner animation="border" variant="danger" />
+      </div>
     );
+  }
 
   return (
     <div className="bg-dark text-white min-vh-100 pb-5">
@@ -64,31 +63,13 @@ const MyFilmCarousel = () => {
             </button>
             <ul className="dropdown-menu dropdown-menu-dark">
               <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onclick="filtrogenere('commedia')"
-                >
-                  Comedy
-                </a>
+                <button className="dropdown-item">Comedy</button>
               </li>
               <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onclick="filtrogenere('drama')"
-                >
-                  Drama
-                </a>
+                <button className="dropdown-item">Drama</button>
               </li>
               <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  onclick="filtrogenere('thriller')"
-                >
-                  Thriller
-                </a>
+                <button className="dropdown-item">Thriller</button>
               </li>
             </ul>
           </div>
@@ -96,7 +77,6 @@ const MyFilmCarousel = () => {
             <button className="btn btn-dark btn-sm border-0 rounded-0 px-3 py-1">
               <i className="bi bi-text-left text-secondary"></i>
             </button>
-
             <button className="btn btn-dark btn-sm border-0 rounded-0 px-3 py-1 border-start border-secondary">
               <i className="bi bi-three-dots-vertical text-light"></i>
             </button>
@@ -104,36 +84,36 @@ const MyFilmCarousel = () => {
         </div>
 
         <h5 className="mb-3">Trending Now</h5>
-
         <Carousel
           interval={null}
           indicators={true}
-          className=" custom-carousel mb-5"
+          className="custom-carousel mb-5"
         >
           <Carousel.Item>
             <Row className="g-2">
               {movies.slice(0, 6).map((m) => (
-                <Col key={m.id} xs={6} md={4} lg={2}>
+                <Col key={`trend-1-${m.id}`} xs={6} md={4} lg={2}>
                   <img
                     src={IMG_URL + m.poster_path}
                     className="img-fluid rounded movie-card"
-                    alt="poster"
+                    alt={m.title}
                     onMouseEnter={riproduciSuono}
+                    style={{ cursor: "pointer" }}
                   />
                 </Col>
               ))}
             </Row>
           </Carousel.Item>
-
           <Carousel.Item>
             <Row className="g-2">
               {movies.slice(6, 12).map((m) => (
-                <Col key={m.id} xs={6} md={4} lg={2}>
+                <Col key={`trend-2-${m.id}`} xs={6} md={4} lg={2}>
                   <img
                     src={IMG_URL + m.poster_path}
                     className="img-fluid rounded movie-card"
-                    alt="poster"
+                    alt={m.title}
                     onMouseEnter={riproduciSuono}
+                    style={{ cursor: "pointer" }}
                   />
                 </Col>
               ))}
@@ -145,32 +125,18 @@ const MyFilmCarousel = () => {
         <Carousel
           interval={null}
           indicators={true}
-          className=" custom-carousel mb-5"
-          onMouseEnter={riproduciSuono}
+          className="custom-carousel mb-5"
         >
           <Carousel.Item>
             <Row className="g-2">
               {movies.slice(12, 18).map((m) => (
-                <Col key={m.id} xs={6} md={4} lg={2}>
+                <Col key={`action-1-${m.id}`} xs={6} md={4} lg={2}>
                   <img
                     src={IMG_URL + m.poster_path}
                     className="img-fluid rounded movie-card"
-                    alt="poster"
+                    alt={m.title}
                     onMouseEnter={riproduciSuono}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Row className="g-2">
-              {movies.slice(18, 24).map((m) => (
-                <Col key={m.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + m.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt="poster"
-                    onMouseEnter={riproduciSuono}
+                    style={{ cursor: "pointer" }}
                   />
                 </Col>
               ))}
@@ -179,35 +145,21 @@ const MyFilmCarousel = () => {
         </Carousel>
 
         <h5 className="mb-3">Drama Movies</h5>
-
         <Carousel
           interval={null}
           indicators={true}
-          className=" custom-carousel mb-5"
+          className="custom-carousel mb-5"
         >
           <Carousel.Item>
             <Row className="g-2">
               {movies.slice(24, 30).map((m) => (
-                <Col key={m.id} xs={6} md={4} lg={2}>
+                <Col key={`drama-1-${m.id}`} xs={6} md={4} lg={2}>
                   <img
                     src={IMG_URL + m.poster_path}
                     className="img-fluid rounded movie-card"
-                    alt="poster"
+                    alt={m.title}
                     onMouseEnter={riproduciSuono}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Row className="g-2">
-              {movies.slice(30, 36).map((m) => (
-                <Col key={m.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + m.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt="poster"
-                    onMouseEnter={riproduciSuono}
+                    style={{ cursor: "pointer" }}
                   />
                 </Col>
               ))}

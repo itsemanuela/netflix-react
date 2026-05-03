@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Carousel, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 //Stessa logica del MyFilmCarousel, ho cambiato l'endpoint della mia Api per recuperare tutte le sitcom
 
@@ -71,12 +72,14 @@ const MySitcomCarousel = () => {
             <Row className="g-2">
               {shows.slice(0, 6).map((s) => (
                 <Col key={s.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + s.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt={s.name}
-                    onMouseEnter={riproduciSuono}
-                  />
+                  <Link to={`/tv-shows/${s.id}`}>
+                    <img
+                      src={IMG_URL + s.poster_path}
+                      className="img-fluid rounded movie-card"
+                      alt={s.name}
+                      onMouseEnter={riproduciSuono}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>
@@ -85,12 +88,14 @@ const MySitcomCarousel = () => {
             <Row className="g-2">
               {shows.slice(6, 12).map((s) => (
                 <Col key={s.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + s.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt={s.name}
-                    onMouseEnter={riproduciSuono}
-                  />
+                  <Link to={`/tv-shows/${s.id}`}>
+                    <img
+                      src={IMG_URL + s.poster_path}
+                      className="img-fluid rounded movie-card"
+                      alt={s.name}
+                      onMouseEnter={riproduciSuono}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>
@@ -107,12 +112,14 @@ const MySitcomCarousel = () => {
             <Row className="g-2">
               {shows.slice(12, 18).map((s) => (
                 <Col key={s.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + s.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt={s.name}
-                    onMouseEnter={riproduciSuono}
-                  />
+                  <Link to={`/tv-shows/${s.id}`}>
+                    <img
+                      src={IMG_URL + s.poster_path}
+                      className="img-fluid rounded movie-card"
+                      alt={s.name}
+                      onMouseEnter={riproduciSuono}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>
@@ -121,12 +128,14 @@ const MySitcomCarousel = () => {
             <Row className="g-2">
               {shows.slice(18, 24).map((s) => (
                 <Col key={s.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + s.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt={s.name}
-                    onMouseEnter={riproduciSuono}
-                  />
+                  <Link to={`/tv-shows/${s.id}`}>
+                    <img
+                      src={IMG_URL + s.poster_path}
+                      className="img-fluid rounded movie-card"
+                      alt={s.name}
+                      onMouseEnter={riproduciSuono}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>
@@ -143,12 +152,14 @@ const MySitcomCarousel = () => {
             <Row className="g-2">
               {shows.slice(24, 30).map((s) => (
                 <Col key={s.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + s.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt={s.name}
-                    onMouseEnter={riproduciSuono}
-                  />
+                  <Link to={`/tv-shows/${s.id}`}>
+                    <img
+                      src={IMG_URL + s.poster_path}
+                      className="img-fluid rounded movie-card"
+                      alt={s.name}
+                      onMouseEnter={riproduciSuono}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>
@@ -157,12 +168,14 @@ const MySitcomCarousel = () => {
             <Row className="g-2">
               {shows.slice(30, 36).map((s) => (
                 <Col key={s.id} xs={6} md={4} lg={2}>
-                  <img
-                    src={IMG_URL + s.poster_path}
-                    className="img-fluid rounded movie-card"
-                    alt={s.name}
-                    onMouseEnter={riproduciSuono}
-                  />
+                  <Link to={`/tv-shows/${s.id}`}>
+                    <img
+                      src={IMG_URL + s.poster_path}
+                      className="img-fluid rounded movie-card"
+                      alt={s.name}
+                      onMouseEnter={riproduciSuono}
+                    />
+                  </Link>
                 </Col>
               ))}
             </Row>

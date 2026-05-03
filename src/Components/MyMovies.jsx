@@ -2,39 +2,32 @@ import { Component } from "react";
 import { Container, Carousel, Row, Col, Spinner, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-class MyGallery extends Component {
+class MyMovies extends Component {
   state = {
     movies: [],
     isLoading: true,
     isError: "",
   };
 
-  //suono sulle card hover
-  riproduciSuono = () => {
-    const audio = new Audio("./public/Audio/hover-sound-effect.mp3");
-    audio.volume = 0.7;
-    audio.play().catch((err) => console.log("Audio bloccato:", err));
-  };
-
   getFilm = () => {
     this.setState({ isLoading: true });
 
-    fetch(`http://www.omdbapi.com/?apikey=b3658703&s=${this.props.sagaName}`)
+    fetch(
+      `http://www.omdbapi.com/?apikey=b3658703&s=${encodeURIComponent(this.props.sagaName)}&type=movie`,
+    )
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Errore nella risposta del server");
-        }
+        if (!response.ok) throw new Error("Errore di rete");
+        return response.json();
       })
       .then((data) => {
         if (data.Response === "True") {
-          const validMovies = data.Search.filter(
-            (m) => m.Poster && m.Poster !== "N/A" && m.Type === "movie",
+          const uniqueMovies = data.Search.filter(
+            (movie, index, self) =>
+              index === self.findIndex((m) => m.imdbID === movie.imdbID),
           );
-          //ho dovuto trovare un modo per filtrare i film in quanto mi sono accorta che parti dell'api sono "rotte" e non permettono di mostrare i poster: dunque ho cercato un metodo per non mostrare quelli rotti (display:none sullo style delle img)
+
           this.setState({
-            movies: validMovies,
+            movies: uniqueMovies,
             isLoading: false,
             isError: "",
           });
@@ -43,7 +36,6 @@ class MyGallery extends Component {
         }
       })
       .catch((err) => {
-        console.error("Errore nel recupero film:", err);
         this.setState({ isError: err.message, isLoading: false });
       });
   };
@@ -55,7 +47,9 @@ class MyGallery extends Component {
   render() {
     return (
       <Container fluid className="px-4 my-4">
-        <h5 className="text-light mt-4 mb-3">{this.props.sagaName}</h5>
+        <h5 className="text-light mt-4 mb-3 text-capitalize">
+          {this.props.sagaName}
+        </h5>
 
         {this.state.isLoading && (
           <div className="d-flex justify-content-center my-5">
@@ -69,24 +63,29 @@ class MyGallery extends Component {
 
         {!this.state.isLoading && !this.state.isError && (
           <Carousel
-            id="carouselTrending"
-            indicators={true}
+            id={`carousel-${this.props.sagaName.replace(/\s+/g, "")}`}
+            indicators={false}
             interval={null}
-            className="custom-carousel pb-4"
           >
             <Carousel.Item>
-              <Row className="flex-nowrap overflow-x-auto g-1 px-5 no-scrollbar">
-                {this.state.movies.slice(0, 6).map((movie) => (
-                  <Col key={movie.imdbID} xs={12} md={4} lg={2}>
+              <Row className="flex-nowrap g-1 px-5">
+                {this.state.movies.slice(0, 6).map((movie, index) => (
+                  <Col
+                    key={`movie-${movie.imdbID}-${index}`}
+                    xs={12}
+                    md={4}
+                    lg={2}
+                  >
                     <Link to={`/movie-details/${movie.imdbID}`}>
                       <img
-                        src={movie.Poster}
+                        src={
+                          movie.Poster !== "N/A"
+                            ? movie.Poster
+                            : "https://via.placeholder.com/300x450?text=No+Poster"
+                        }
                         alt={movie.Title}
-                        className="film-poster"
-                        onMouseEnter={this.riproduciSuono}
-                        onError={(e) => {
-                          e.target.closest(".col").style.display = "none";
-                        }}
+                        className="img-fluid rounded film-poster movie-card"
+                        style={{ cursor: "pointer" }}
                       />
                     </Link>
                   </Col>
@@ -96,14 +95,26 @@ class MyGallery extends Component {
 
             {this.state.movies.length > 6 && (
               <Carousel.Item>
-                <Row className="flex-nowrap overflow-x-auto g-1 px-5 no-scrollbar">
-                  {this.state.movies.slice(6, 12).map((movie) => (
-                    <Col key={movie.imdbID} xs={12} md={4} lg={2}>
-                      <img
-                        src={movie.Poster}
-                        alt={movie.Title}
-                        className="film-poster"
-                      />
+                <Row className="flex-nowrap g-1 px-5">
+                  {this.state.movies.slice(6, 12).map((movie, index) => (
+                    <Col
+                      key={`movie-extra-${movie.imdbID}-${index}`}
+                      xs={12}
+                      md={4}
+                      lg={2}
+                    >
+                      <Link to={`/movie-details/${movie.imdbID}`}>
+                        <img
+                          src={
+                            movie.Poster !== "N/A"
+                              ? movie.Poster
+                              : "https://via.placeholder.com/300x450?text=No+Poster"
+                          }
+                          alt={movie.Title}
+                          className="img-fluid rounded film-poster movie-card"
+                          style={{ cursor: "pointer" }}
+                        />
+                      </Link>
                     </Col>
                   ))}
                 </Row>
@@ -116,4 +127,4 @@ class MyGallery extends Component {
   }
 }
 
-export default MyGallery;
+export default MyMovies;

@@ -15,6 +15,7 @@ import MyRecent from "./Components/MyRecent";
 import SignOut from "./SignOut";
 import MySitcomCarousel from "./Components/MySitcomCarousel";
 import Dettaglio from "./Components/Dettaglio";
+import DettaglioSitcom from "./Components/DettaglioSitcom";
 
 const AppContent = () => {
   const location = useLocation();
@@ -58,6 +59,7 @@ const AppContent = () => {
           <Route path="/" element={<MySitcomCarousel />} />
           <Route path="/logout" element={<SignOut />} />
           <Route path="/movie-details/:movieId" element={<Dettaglio />} />
+          <Route path="/tv-shows/:id" element={<DettaglioSitcom />} />
         </Routes>
       </main>
 

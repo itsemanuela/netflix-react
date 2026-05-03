@@ -40,7 +40,15 @@
 }
 
 .carousel-item img:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
+    z-index: 20;       
+}
+
+
+.custom-carousel .carousel-control-prev-icon,
+.custom-carousel .carousel-control-next-icon {
+    filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(354deg) brightness(92%) contrast(92%);
+   
 }
 
       main {
