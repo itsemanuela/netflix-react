@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import MyTvShow from "./Components/MySitcomCarousel";
-
 import MyFooter from "./Components/MyFooter";
 import MyNavbar from "./Components/MyNavbar";
 import MyGallery from "./Components/MyMovies";
@@ -16,6 +15,7 @@ import SignOut from "./SignOut";
 import MySitcomCarousel from "./Components/MySitcomCarousel";
 import Dettaglio from "./Components/Dettaglio";
 import DettaglioSitcom from "./Components/DettaglioSitcom";
+import Modale from "./Components/Modale";
 
 const AppContent = () => {
   const location = useLocation();
@@ -61,6 +61,8 @@ const AppContent = () => {
           <Route path="/movie-details/:movieId" element={<Dettaglio />} />
           <Route path="/tv-shows/:id" element={<DettaglioSitcom />} />
         </Routes>
+
+        <Modale />
       </main>
 
       <footer>{!isLoginPage && <MyFooter />}</footer>
