@@ -1,4 +1,6 @@
 const MyFooter = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="mt-5 py-5 container">
       <div className="row justify-content-center">
@@ -62,7 +64,8 @@ const MyFooter = () => {
 
           <div className="mt-3">
             <p className="text-secondary small mt-3">
-              <i className="bi bi-c-circle"></i> 1997-2024 Netflix, Inc.
+              <i className="bi bi-c-circle"></i> 1997-{currentYear} Netflix,
+              Inc.
             </p>
           </div>
         </div>
